@@ -1,4 +1,4 @@
-# Solar Snow Clearing Web Applications
+# Solar Snow Clearing Web Application
 
 ## How to run locally
 
