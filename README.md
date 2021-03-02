@@ -5,7 +5,7 @@
 Install nodeJs from the link here
 https://nodejs.org/en/download/
 
-Then, open up the (Windows) command prompt or (Mac) terminal, and navigate to the directory you wish to download the app to.
+Then, open up the (Windows) command prompt or (Mac) terminal, and navigate to the directory you wish to download the app to. If you do not know how, you do not need to navigate anywhere
 
 Type: git clone https://github.com/andyrost/solarsnowclearing.git
 
