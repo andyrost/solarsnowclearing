@@ -9,7 +9,7 @@ Once installation is complete, clone this repo by hitting the green Code button 
 
 Then, open up the (Windows) command prompt or (Mac) terminal, and navigate to the directory you wish to download the app to.
 
-Type "git clone <http link that you copied>"
+Type: git clone 'http link that you copied'
 
 Then type: cd solarsnowclearing/snowui
 
