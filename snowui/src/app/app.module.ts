@@ -8,6 +8,8 @@ import { BarreComponent } from './modules/barre/barre.component';
 import { BrandonComponent } from './modules/brandon/brandon.component';
 import { StAlbansComponent } from './modules/st-albans/st-albans.component';
 import { HomeComponent } from './core/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar'
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { HomeComponent } from './core/home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
