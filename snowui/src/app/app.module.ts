@@ -7,6 +7,7 @@ import { HeaderComponent } from './core/header/header.component';
 import { BarreComponent } from './modules/barre/barre.component';
 import { BrandonComponent } from './modules/brandon/brandon.component';
 import { StAlbansComponent } from './modules/st-albans/st-albans.component';
+import { HomeComponent } from './core/home/home.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { StAlbansComponent } from './modules/st-albans/st-albans.component';
     HeaderComponent,
     BarreComponent,
     BrandonComponent,
-    StAlbansComponent
+    StAlbansComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
