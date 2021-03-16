@@ -17,8 +17,9 @@
             Tomorrow's Weather
         </mat-card-title>
         <mat-card-content>
-            Current Temperature: {{ barreForecast?.current?.temp }}&deg;F<br>
-            Cloud cover: {{ barreForecast?.current?.clouds }}%
+            High: {{ barreForecast?.daily[0]?.temp?.max }}&deg;F<br>
+            Low: {{ barreForecast?.daily[0]?.temp?.min }}&deg;F<br>
+            Cloud cover: {{ barreForecast?.daily[0]?.clouds }}%
         </mat-card-content>
 
     </mat-card></mat-grid-tile>
