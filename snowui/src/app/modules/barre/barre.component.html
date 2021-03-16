@@ -1,1 +1,26 @@
-<p>barre works!</p>
+<h1>Barre, Vermont</h1>
+<mat-grid-list cols = "2">
+    <mat-grid-tile>
+    <mat-card class="current-weather">
+        <mat-card-title>
+            Current Weather
+        </mat-card-title>
+        <mat-card-content>
+            Current Temperature: {{ barreForecast?.current?.temp }}&deg;F<br>
+            Cloud cover: {{ barreForecast?.current?.clouds }}%
+        </mat-card-content>
+    </mat-card></mat-grid-tile>
+
+    <mat-grid-tile>
+    <mat-card class="current-weather">
+        <mat-card-title>
+            Tomorrow's Weather
+        </mat-card-title>
+        <mat-card-content>
+            Current Temperature: {{ barreForecast?.current?.temp }}&deg;F<br>
+            Cloud cover: {{ barreForecast?.current?.clouds }}%
+        </mat-card-content>
+
+    </mat-card></mat-grid-tile>
+</mat-grid-list>
+
