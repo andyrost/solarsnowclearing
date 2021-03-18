@@ -20,6 +20,8 @@ import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCloud, faCloudMeatball, faCloudMoon, faCloudMoonRain, faCloudRain, faCloudShowersHeavy, faCloudSun, faCloudSunRain, faMoon,faSmog,faSnowflake, faSun } from '@fortawesome/free-solid-svg-icons';
 
 
 @NgModule({
@@ -45,10 +47,15 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatListModule,
     HttpClientModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    FontAwesomeModule
 
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary){
+    library.addIcons(faCloud,faCloudMoon, faCloudMoonRain,faCloudShowersHeavy,faCloudRain,faCloudSun,faCloudSunRain,faMoon,faSnowflake,faSun,faCloudMeatball,faSmog)
+  }
+ }

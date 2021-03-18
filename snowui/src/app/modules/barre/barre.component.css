@@ -1,3 +1,12 @@
 .current-weather {
     width:30vw;
+    text-align: center;
+}
+.future-weather {
+    width:10vw;
+    text-align: center;
+}
+
+.future-weather-list {
+    width: 100%
 }
