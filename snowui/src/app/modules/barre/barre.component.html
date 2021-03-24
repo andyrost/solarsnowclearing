@@ -28,20 +28,20 @@
 
     </mat-card></mat-grid-tile>
 </mat-grid-list>
-<mat-grid-list cols = 6 rowHeight="12rem" class = "future-weather-list">
+<mat-grid-list cols = 6 rowHeight="15rem" class = "future-weather-list">
     <mat-grid-tile *ngFor="let day of barreForecast?.daily.slice(2,8); let i=index">
         <mat-card class="future-weather">
             <mat-card-title>
                 {{ day.dt * 1000 | date:'EEEE'}}
             </mat-card-title>
             <fa-icon [icon]="getIconName(i+2)" size="4x"></fa-icon>
-        <h1>Hi: {{ barreForecast?.daily[i+2]?.temp?.max | number: '1.0-0'}}&deg;  
-            Lo: {{ barreForecast?.daily[i+2]?.temp?.min | number: '1.0-0'}}&deg;F</h1>
-        <div *ngIf="barreForecast?.daily[i+2]?.rain">
-            Expected Rain: {{ barreForecast?.daily[i+2]?.rain }} mm
+        <h2>Hi: {{ barreForecast?.daily[i+2]?.temp?.max | number: '1.0-0'}}&deg;F 
+            Lo: {{ barreForecast?.daily[i+2]?.temp?.min | number: '1.0-0'}}&deg;F</h2>
+        <div *ngIf="barreForecast?.daily[i+2]?.rain && !barreForecast?.daily[i+2]?.snow">
+            Total Rain: {{ barreForecast?.daily[i+2]?.rain }}mm
         </div>
         <div *ngIf="barreForecast?.daily[i+2]?.snow">
-            Expected Snow: {{ barreForecast?.daily[i+2]?.snow }} mm
+            Total Snow: {{ barreForecast?.daily[i+2]?.snow }}mm
         </div>
         <div *ngIf="!barreForecast?.daily[i+2]?.snow && !barreForecast?.daily[i+2]?.rain">
             No expected precipitation

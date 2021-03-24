@@ -16,7 +16,7 @@ export class BarreComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.http.get("https://api.openweathermap.org/data/2.5/onecall?lat="+constants.barreLat+"&lon="+constants.barreLong+"&units=imperial&appid="+constants.weatherKey).subscribe(
+    this.http.get("https://api.openweathermap.org/data/2.5/onecall?lat="+constants.brandonLat+"&lon="+constants.brandonLong+"&units=imperial&appid="+constants.weatherKey).subscribe(
       res => {
         this.barreForecast = res
         console.log(this.barreForecast)

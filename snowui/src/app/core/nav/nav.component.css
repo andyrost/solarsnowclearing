@@ -2,4 +2,8 @@
     width: 100vw;
     height: 93vh;
   }
+
+.mat-drawer{
+  max-width: 12vw;
+}
 /* Mat toolbar is 5 VH by default, rest of container is 95 */
