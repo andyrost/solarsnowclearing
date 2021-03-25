@@ -1,0 +1,15 @@
+.current-weather {
+    width:30vw;
+    text-align: center;
+}
+.future-weather {
+    width:11vw;
+    text-align: center;
+}
+
+.future-weather-list {
+    width: 100%
+}
+.mat-card.h1{
+    font-size: 1rem;
+}

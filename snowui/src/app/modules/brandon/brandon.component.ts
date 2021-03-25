@@ -10,27 +10,14 @@ import { icon } from 'src/app/shared/weatherIconMap';
   styleUrls: ['./brandon.component.css']
 })
 export class BrandonComponent implements OnInit {
-  public brandonForecast: any;
+  public brandonSiteName: string = "Brandon";
+  public brandonLat: string = constants.brandonLat;
+  public brandonLong: string = constants.brandonLong;
   public icon = icon;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get("https://api.openweathermap.org/data/2.5/onecall?lat="+constants.barreLat+"&lon="+constants.barreLong+"&units=imperial&appid="+constants.weatherKey).subscribe(
-      res => {
-        this.brandonForecast = res
-        console.log(this.brandonForecast)
-      }
-    )
-  }
-  public getIconName(dayNum: number = 0, current:boolean = false){
-    if (current == false){
-      var iconValue = this.brandonForecast?.daily[dayNum].weather[0].icon
-    }
-    else{
-      var iconValue = this.brandonForecast?.current.weather[0].icon
-    }
-    return this.icon.get(iconValue)
   }
 
 }

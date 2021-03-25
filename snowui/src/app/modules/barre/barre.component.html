@@ -1,52 +1,5 @@
-<h1>Barre, Vermont</h1>
-<mat-grid-list cols = "2" rowHeight="20rem">
-    <mat-grid-tile>
-    <mat-card class="current-weather">
-        <mat-card-title>
-            Current Weather
-        </mat-card-title>
-        <fa-icon [icon]="getIconName(0,true)" size="4x"></fa-icon>
-        <h1>{{ barreForecast?.current?.temp | number: '1.0-0'}}&deg;F</h1>
-        <mat-card-content>
-            Date: {{ barreForecast?.daily[0].dt * 1000 | date:'EEEE, MMMM d'}}<br>
-            Cloud cover: {{ barreForecast?.current?.clouds }}%
-        </mat-card-content>
-    </mat-card></mat-grid-tile>
-
-    <mat-grid-tile>
-    <mat-card class="current-weather">
-        <mat-card-title>
-            Tomorrow's Weather
-        </mat-card-title>
-        <fa-icon icon="moon" [icon]="getIconName(1)" size="4x"></fa-icon>
-        <h1>Hi: {{ barreForecast?.daily[1]?.temp?.max | number: '1.0-0'}}&deg;  
-            Lo: {{ barreForecast?.daily[1]?.temp?.min | number: '1.0-0'}}&deg;F</h1>
-        <mat-card-content>
-            Date: {{ barreForecast?.daily[1].dt * 1000 | date:'EEEE, MMMM d'}}<br>
-            Cloud cover: {{ barreForecast?.daily[1]?.clouds }}%
-        </mat-card-content>
-
-    </mat-card></mat-grid-tile>
-</mat-grid-list>
-<mat-grid-list cols = 6 rowHeight="15rem" class = "future-weather-list">
-    <mat-grid-tile *ngFor="let day of barreForecast?.daily.slice(2,8); let i=index">
-        <mat-card class="future-weather">
-            <mat-card-title>
-                {{ day.dt * 1000 | date:'EEEE'}}
-            </mat-card-title>
-            <fa-icon [icon]="getIconName(i+2)" size="4x"></fa-icon>
-        <h2>Hi: {{ barreForecast?.daily[i+2]?.temp?.max | number: '1.0-0'}}&deg;F 
-            Lo: {{ barreForecast?.daily[i+2]?.temp?.min | number: '1.0-0'}}&deg;F</h2>
-        <div *ngIf="barreForecast?.daily[i+2]?.rain && !barreForecast?.daily[i+2]?.snow">
-            Total Rain: {{ barreForecast?.daily[i+2]?.rain }}mm
-        </div>
-        <div *ngIf="barreForecast?.daily[i+2]?.snow">
-            Total Snow: {{ barreForecast?.daily[i+2]?.snow }}mm
-        </div>
-        <div *ngIf="!barreForecast?.daily[i+2]?.snow && !barreForecast?.daily[i+2]?.rain">
-            No expected precipitation
-        </div>
-        </mat-card>
-    </mat-grid-tile>
-</mat-grid-list>
-
+<app-site-template
+[siteName]="barreSiteName"
+[lat]="barreLat"
+[long]="barreLong">
+</app-site-template>

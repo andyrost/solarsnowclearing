@@ -22,6 +22,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCloud, faCloudMeatball, faCloudMoon, faCloudMoonRain, faCloudRain, faCloudShowersHeavy, faCloudSun, faCloudSunRain, faMoon,faSmog,faSnowflake, faSun } from '@fortawesome/free-solid-svg-icons';
+import { SiteTemplateComponent } from './modules/site-template/site-template.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { faCloud, faCloudMeatball, faCloudMoon, faCloudMoonRain, faCloudRain, fa
     HomeComponent,
     HistoryComponent,
     ManualCalculationComponent,
-    NavComponent
+    NavComponent,
+    SiteTemplateComponent
   ],
   imports: [
     BrowserModule,

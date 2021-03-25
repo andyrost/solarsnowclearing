@@ -9,29 +9,15 @@ import { icon } from 'src/app/shared/weatherIconMap';
   styleUrls: ['./barre.component.css']
 })
 export class BarreComponent implements OnInit {
-  public barreForecast: any;
+  public barreSiteName: string = "Barre";
+  public barreLat: string = constants.barreLat
+  public barreLong: string = constants.barreLong
   public icon = icon;
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   ngOnInit(): void {
 
-    this.http.get("https://api.openweathermap.org/data/2.5/onecall?lat="+constants.brandonLat+"&lon="+constants.brandonLong+"&units=imperial&appid="+constants.weatherKey).subscribe(
-      res => {
-        this.barreForecast = res
-        console.log(this.barreForecast)
-      }
-    )
-    
-  }
-  public getIconName(dayNum: number = 0, current:boolean = false){
-    if (current == false){
-      var iconValue = this.barreForecast?.daily[dayNum].weather[0].icon
-    }
-    else{
-      var iconValue = this.barreForecast?.current.weather[0].icon
-    }
-    return this.icon.get(iconValue)
   }
 
 }

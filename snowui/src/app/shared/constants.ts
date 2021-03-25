@@ -4,4 +4,6 @@ export const constants = {
     barreLong: "-72.5021",
     brandonLat: "43.7981",
     brandonLong: "-73.0876",
+    stAlbansLat: "44.8107",
+    stAlbansLong: "-73.0836",
 }
