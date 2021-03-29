@@ -1,4 +1,7 @@
 <h1>{{ siteName }}, Vermont</h1>
+<div *ngFor = "let day of snowDepthArray">
+    {{day}}
+</div>
 <mat-grid-list cols = "2" rowHeight="20rem">
     <mat-grid-tile>
     <mat-card class="current-weather">

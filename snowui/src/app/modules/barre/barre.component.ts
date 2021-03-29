@@ -12,6 +12,9 @@ export class BarreComponent implements OnInit {
   public barreSiteName: string = "Barre";
   public barreLat: string = constants.barreLat
   public barreLong: string = constants.barreLong
+  public expectedKWH: any = [1566.394, 2080.682, 2566.306, 2591.413, 2733.584, 2500.547,
+    2774.19, 2643.132, 2366.113, 1810.858, 1347.22, 1084.758];
+  public energyPrice = 0.2095;
   public icon = icon;
 
   constructor() { }
