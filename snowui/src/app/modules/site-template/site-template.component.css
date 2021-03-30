@@ -13,3 +13,17 @@
 .mat-card.h1{
     font-size: 1rem;
 }
+
+.top-card {
+    text-align: center;
+    width: 70%;
+    display: inline-block;
+}
+
+
+
+.page-wrapper {
+    text-align:center;
+    width: 70vw;
+    display: inline-block;
+}
