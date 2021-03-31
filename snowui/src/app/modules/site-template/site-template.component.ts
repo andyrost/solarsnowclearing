@@ -12,6 +12,8 @@ export class SiteTemplateComponent implements OnInit {
   @Input() siteName: string | undefined;
   @Input() lat: string | undefined;
   @Input() long: string | undefined;
+  @Input() monthlyKWH: any[] = [1,1,1,1]
+  @Input() energyPrice: number = 0.2
 
   public forecastData: any;
   public snowDepthArray: any = [];
@@ -40,7 +42,36 @@ export class SiteTemplateComponent implements OnInit {
     return this.icon.get(iconValue)
   }
 
-  public snowmeltForecast(currentSnowDepth: any = 0){
+  public getDayIdealizedRevenue(date: number) {
+    let dateObj = new Date(date*1000)
+    let month = dateObj.getMonth()
+    return this.monthlyKWH[month] * this.energyPrice
+  }
+
+  public getDayExpectedRevenue(date: number, snowDepth: number) {
+    let dateObj = new Date(date*1000)
+    let month = dateObj.getMonth()
+    let idealRevenue = this.monthlyKWH[month] * this.energyPrice
+    let sunLoss = 0
+    if (snowDepth > 5) {
+      sunLoss = 0.6
+    }
+    if (snowDepth > 10) {
+      sunLoss = 0.7
+    }
+    if (snowDepth > 15) {
+      sunLoss = 0.7
+    }
+    if (snowDepth > 20) {
+      sunLoss = 0.9
+    }
+    if (snowDepth > 100) {
+      sunLoss = 1.0
+    }
+    return idealRevenue - sunLoss*idealRevenue
+  }
+
+  public snowmeltForecast(currentSnowDepth: any = 0) {
     const ddCoeff = 2.74
     let snowDepth = currentSnowDepth
 
@@ -51,7 +82,7 @@ export class SiteTemplateComponent implements OnInit {
       let meanTempFTotal = day.temp.day + day.temp.night + day.temp.morn + day.temp.eve
       let meanTempF = meanTempFTotal/4
       let meanTempC = (meanTempF - 32)*(5/9)
-      let snowMelt = meanTempC * ddCoeff
+      let snowMelt = meanTempC * ddCoeff * 3
       if (snowMelt < 0) {
         snowMelt = 0
       }

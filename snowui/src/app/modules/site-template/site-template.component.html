@@ -1,9 +1,23 @@
 <div class="page-wrapper">
 <h1>{{ siteName }}, Vermont</h1>
 <mat-card class="top-card">
-    <div *ngFor = "let day of snowDepthArray">
-        {{day}}
+    <mat-card-title>Eight Day Expected Revenue Loss</mat-card-title><br>
+    <div class="flex-contain">
+    <div *ngFor = "let day of snowDepthArray.slice(0,4); let i = index">
+        <h1>{{forecastData?.daily[i].dt * 1000 | date:'EEEE'}}<br></h1>
+        Expected Snowdepth: {{day | number: '1.2-2'}} mm<br>
+        Idealized Revenue: {{getDayIdealizedRevenue(forecastData?.daily[i].dt) | number: '1.2-2'}}$<br>
+        <b>Expected Revenue: {{getDayExpectedRevenue(forecastData?.daily[i].dt, day) | number: '1.2-2'}}$</b>
     </div>
+</div><br>
+<div class="flex-contain">
+<div *ngFor = "let day of snowDepthArray.slice(4,8); let i = index">
+    <h1>{{forecastData?.daily[i+4].dt * 1000 | date:'EEEE'}}<br></h1>
+    Expected Snowdepth: {{day | number: '1.2-2'}} mm<br>
+    Idealized Revenue: {{getDayIdealizedRevenue(forecastData?.daily[i+4].dt) | number: '1.2-2'}}$<br>
+    <b>Expected Revenue: {{getDayExpectedRevenue(forecastData?.daily[i+4].dt, day) | number: '1.2-2'}}$</b>
+</div>
+</div>
 </mat-card>
 <mat-grid-list cols = "2" rowHeight="20rem">
     <mat-grid-tile>

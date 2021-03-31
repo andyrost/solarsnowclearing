@@ -16,14 +16,17 @@
 
 .top-card {
     text-align: center;
-    width: 70%;
+    width: 90%;
     display: inline-block;
 }
 
-
-
 .page-wrapper {
     text-align:center;
-    width: 70vw;
+    width: 86vw;
     display: inline-block;
+}
+
+.flex-contain {
+    display: flex;
+    justify-content: space-between;
 }
