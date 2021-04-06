@@ -23,7 +23,8 @@ export class SiteTemplateComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get("https://api.openweathermap.org/data/2.5/onecall?lat="+this.lat+"&lon="+this.long+"&units=imperial&appid="+constants.weatherKey).subscribe(
+    this.http.get("https://api.openweathermap.org/data/2.5/onecall?lat="+this.lat+
+    "&lon="+this.long+"&units=imperial&appid="+constants.weatherKey).subscribe(
       res => {
         this.forecastData = res
         console.log(this.forecastData)
