@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'brandon', component: BrandonComponent},
   {path: 'st-albans', component: StAlbansComponent},
   {path: 'history', component: HistoryComponent},
-  {path: 'manual-calculation', component: ManualCalculationComponent}
+  {path: 'custom', component: ManualCalculationComponent}
 
 ];
 

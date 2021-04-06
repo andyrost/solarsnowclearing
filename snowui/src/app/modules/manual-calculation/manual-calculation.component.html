@@ -1,1 +1,32 @@
-<p>manual-calculation works!</p>
+<div class = "page-wrapper">
+<mat-card class = "form-card">
+    <form [formGroup]="customLocationForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="standard">
+        <mat-label>Latitude</mat-label>
+        <input matInput formControlName="lat" placeholder="Latitude">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+        <mat-label>Longitude</mat-label>
+        <input matInput formControlName="long" placeholder="Longitude">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+        <mat-label>Expected Daily KWH</mat-label>
+        <input matInput formControlName="kwh" placeholder="KWH">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+        <mat-label>Electricity Price</mat-label>
+        <input matInput formControlName="price" placeholder="Price">
+    </mat-form-field>
+    <button type="submit" [disabled]="!customLocationForm.valid">Submit</button>
+</form>
+</mat-card>
+
+<app-site-template *ngIf = "generateForm"
+[siteName]="customSiteName"
+[lat]="customLat"
+[long]="customLong"
+[monthlyKWH]="monthlyKWH"
+[energyPrice]="energyPrice"
+>
+</app-site-template>
+</div>

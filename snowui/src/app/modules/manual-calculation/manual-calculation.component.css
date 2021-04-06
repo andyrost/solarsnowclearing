@@ -1,0 +1,14 @@
+.form-card {
+    text-align: center;
+    width: 90%;
+    display: inline-block;
+}
+.page-wrapper {
+    text-align:center;
+    width: 86vw;
+    display: inline-block;
+}
+.mat-form-field {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
