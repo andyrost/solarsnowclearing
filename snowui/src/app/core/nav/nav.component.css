@@ -1,11 +1,7 @@
-.example-container {
-    width: 100vw;
-    height: 100vh;
-  }
-
 .content-outlet {
   padding-left: 10px; 
-  padding-top: 5rem; 
+  margin-top: 4rem;
+  height: calc(100vh - 4rem);
 }
 
 .mat-drawer{
@@ -14,9 +10,13 @@
 }
 
 .drawer-list{
-  padding-top: 5rem; 
+  margin-top: 5rem; 
 }
 .active-list-item {
-  background-color: #638055 !important; /* Note: You could also use a custom theme */
+  background-color: #638055 !important;
+}
+
+.mat-drawer-container {
+  height:100%;
 }
 /* Mat toolbar is 5 VH by default, rest of container is 95 */
