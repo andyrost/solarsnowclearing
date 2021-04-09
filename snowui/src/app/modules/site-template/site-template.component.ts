@@ -28,7 +28,7 @@ export class SiteTemplateComponent implements OnInit {
   public setForecastData() {
     this.weatherService.getWeather().subscribe(res => {
       this.forecastData = res
-      setTimeout(()=>{this.snowmeltForecast()}, 5000)
+      setTimeout(()=>{this.snowmeltForecast()}, 500)
       
       
     })
