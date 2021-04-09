@@ -3,7 +3,7 @@
 <mat-card class="top-card">
     <mat-card-title>Eight Day Expected Revenue</mat-card-title><br>
     <div class="flex-contain">
-    <div *ngFor = "let day of snowDepthArray.slice(0,4); let i = index">
+    <div *ngFor = "let day of snowDepthArray.slice(0,4); let i = index" [ngClass]="getWarningClass(day)">
         <h1>{{forecastData?.daily[i].dt * 1000 | date:'EEEE'}}<br></h1>
         Expected Snowdepth: {{day | number: '1.2-2'}} mm<br>
         Idealized Revenue: {{getDayIdealizedRevenue(forecastData?.daily[i].dt) | number: '1.2-2'}}$<br>
@@ -11,7 +11,7 @@
     </div>
 </div><br>
 <div class="flex-contain">
-<div *ngFor = "let day of snowDepthArray.slice(4,8); let i = index">
+<div *ngFor = "let day of snowDepthArray.slice(4,8); let i = index" [ngClass]="getWarningClass(day)">
     <h1>{{forecastData?.daily[i+4].dt * 1000 | date:'EEEE'}}<br></h1>
     Expected Snowdepth: {{day | number: '1.2-2'}} mm<br>
     Idealized Revenue: {{getDayIdealizedRevenue(forecastData?.daily[i+4].dt) | number: '1.2-2'}}$<br>

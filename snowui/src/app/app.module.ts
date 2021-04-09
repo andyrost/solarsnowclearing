@@ -27,6 +27,10 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { faCloud, faCloudMeatball, faCloudMoon, faCloudMoonRain, faCloudRain, faCloudShowersHeavy, faCloudSun, faCloudSunRain, faMoon,faSmog,faSnowflake, faSun } from '@fortawesome/free-solid-svg-icons';
 import { SiteTemplateComponent } from './modules/site-template/site-template.component';
 import { WeatherService } from './shared/weather.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+
 
 
 @NgModule({
@@ -57,7 +61,9 @@ import { WeatherService } from './shared/weather.service';
     FontAwesomeModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent]

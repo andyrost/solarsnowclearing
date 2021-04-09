@@ -28,9 +28,8 @@ export class SiteTemplateComponent implements OnInit {
   public setForecastData() {
     this.weatherService.getWeather().subscribe(res => {
       this.forecastData = res
-      if (Object.keys(this.forecastData).length!==0){
-        this.snowmeltForecast()
-      }
+      setTimeout(()=>{this.snowmeltForecast()}, 5000)
+      
       
     })
   }
@@ -72,6 +71,15 @@ export class SiteTemplateComponent implements OnInit {
       sunLoss = 1.0
     }
     return idealRevenue - sunLoss*idealRevenue
+  }
+
+  public getWarningClass(snowdepth:number){
+    if (snowdepth>20){
+      return 'day-warning'
+    }
+    else{
+      return 'day-normal'
+    }
   }
 
   public snowmeltForecast(currentSnowDepth: any = 0) {

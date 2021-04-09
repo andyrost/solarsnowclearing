@@ -30,3 +30,13 @@
     display: flex;
     justify-content: space-between;
 }
+
+.day-warning {
+    padding:1rem;
+    border-radius: 10px;
+    background-color: rgb(255, 200, 200);
+}
+.day-normal {
+    padding:1rem;
+    border-radius: 10px;
+}
