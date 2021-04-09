@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { constants } from 'src/app/shared/constants';
 import { icon } from 'src/app/shared/weatherIconMap';
+import { WeatherService } from 'src/app/shared/weather.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { icon } from 'src/app/shared/weatherIconMap';
   styleUrls: ['./brandon.component.css']
 })
 export class BrandonComponent implements OnInit {
-  public brandonSiteName: string = "Brandon";
+  public brandonSiteName: string = "Brandon, Vermont";
   public brandonLat: string = constants.brandonLat;
   public brandonLong: string = constants.brandonLong;
   public monthlyKWH: any[] = [1540.484, 2212.643, 2794.123, 2644.573, 2751.145, 2839.637,
@@ -18,9 +19,10 @@ export class BrandonComponent implements OnInit {
   public energyPrice = 0.2095;
   public icon = icon;
 
-  constructor(private http: HttpClient) { }
+  constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
+    this.weatherService.setWeather(this.brandonLat,this.brandonLong);
   }
 
 }

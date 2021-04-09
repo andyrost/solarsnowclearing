@@ -26,6 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCloud, faCloudMeatball, faCloudMoon, faCloudMoonRain, faCloudRain, faCloudShowersHeavy, faCloudSun, faCloudSunRain, faMoon,faSmog,faSnowflake, faSun } from '@fortawesome/free-solid-svg-icons';
 import { SiteTemplateComponent } from './modules/site-template/site-template.component';
+import { WeatherService } from './shared/weather.service';
 
 
 @NgModule({
@@ -58,7 +59,7 @@ import { SiteTemplateComponent } from './modules/site-template/site-template.com
     ReactiveFormsModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

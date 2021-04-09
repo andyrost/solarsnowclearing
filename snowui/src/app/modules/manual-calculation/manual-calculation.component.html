@@ -17,14 +17,12 @@
         <mat-label>Electricity Price</mat-label>
         <input matInput formControlName="price" placeholder="Price">
     </mat-form-field>
-    <button type="submit" [disabled]="!customLocationForm.valid">Submit</button>
+    <button mat-raised-button type="submit" [disabled]="!customLocationForm.valid">Submit</button>
 </form>
 </mat-card>
 
 <app-site-template *ngIf = "generateForm"
 [siteName]="customSiteName"
-[lat]="customLat"
-[long]="customLong"
 [monthlyKWH]="monthlyKWH"
 [energyPrice]="energyPrice"
 >

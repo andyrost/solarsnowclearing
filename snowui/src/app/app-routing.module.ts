@@ -8,7 +8,8 @@ import { ManualCalculationComponent } from './modules/manual-calculation/manual-
 import { StAlbansComponent } from './modules/st-albans/st-albans.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', redirectTo:'/home', pathMatch:'full'},
+  {path: 'home', component: HomeComponent},
   {path: 'barre', component: BarreComponent},
   {path: 'brandon', component: BrandonComponent},
   {path: 'st-albans', component: StAlbansComponent},

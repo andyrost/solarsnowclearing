@@ -1,5 +1,5 @@
 <div class="page-wrapper">
-<h1>{{ siteName }}, Vermont</h1>
+<h1>Showing weather information for {{forecastData?.lat}}, {{forecastData?.lon}} ({{ siteName }})</h1>
 <mat-card class="top-card">
     <mat-card-title>Eight Day Expected Revenue</mat-card-title><br>
     <div class="flex-contain">
@@ -28,7 +28,7 @@
         <fa-icon [icon]="getIconName(0,true)" size="4x"></fa-icon>
         <h1>{{ forecastData?.current?.temp | number: '1.0-0'}}&deg;F</h1>
         <mat-card-content>
-            Date: {{ forecastData?.daily[0].dt * 1000 | date:'EEEE, MMMM d'}}<br>
+            Date: {{ forecastData?.daily[0]?.dt * 1000 | date:'EEEE, MMMM d'}}<br>
             Cloud cover: {{ forecastData?.current?.clouds }}%
         </mat-card-content>
     </mat-card></mat-grid-tile>

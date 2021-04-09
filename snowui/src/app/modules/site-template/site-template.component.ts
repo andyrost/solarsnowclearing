@@ -2,6 +2,7 @@ import { Component, OnInit,Input} from '@angular/core';
 import { icon } from 'src/app/shared/weatherIconMap';
 import { HttpClient } from '@angular/common/http';
 import { constants } from 'src/app/shared/constants';
+import { WeatherService } from 'src/app/shared/weather.service';
 
 @Component({
   selector: 'app-site-template',
@@ -10,8 +11,6 @@ import { constants } from 'src/app/shared/constants';
 })
 export class SiteTemplateComponent implements OnInit {
   @Input() siteName: string | undefined;
-  @Input() lat: string | undefined;
-  @Input() long: string | undefined;
   @Input() monthlyKWH: any[] = [1,1,1,1]
   @Input() energyPrice: number = 0.2
 
@@ -20,17 +19,20 @@ export class SiteTemplateComponent implements OnInit {
   public icon = icon;
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
-    this.http.get("https://api.openweathermap.org/data/2.5/onecall?lat="+this.lat+
-    "&lon="+this.long+"&units=imperial&appid="+constants.weatherKey).subscribe(
-      res => {
-        this.forecastData = res
-        console.log(this.forecastData)
+    this.setForecastData()
+  }
+
+  public setForecastData() {
+    this.weatherService.getWeather().subscribe(res => {
+      this.forecastData = res
+      if (Object.keys(this.forecastData).length!==0){
         this.snowmeltForecast()
       }
-    )
+      
+    })
   }
 
   public getIconName(dayNum: number = 0, current:boolean = false){
@@ -38,7 +40,7 @@ export class SiteTemplateComponent implements OnInit {
       var iconValue = this.forecastData?.daily[dayNum].weather[0].icon
     }
     else{
-      var iconValue = this.forecastData?.current.weather[0].icon
+      var iconValue = this.forecastData?.current?.weather[0]?.icon
     }
     return this.icon.get(iconValue)
   }

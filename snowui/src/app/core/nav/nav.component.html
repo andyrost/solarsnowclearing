@@ -1,16 +1,16 @@
 <mat-drawer-container class="example-container">
     <mat-drawer mode="side" opened>
-        <mat-nav-list>
-            <mat-list-item routerLink="/">Home</mat-list-item>
-            <mat-list-item routerLink="/barre">Barre</mat-list-item>
-            <mat-list-item routerLink="/brandon">Brandon</mat-list-item>
-            <mat-list-item routerLink="/st-albans">St. Albans</mat-list-item>
-            <mat-list-item routerLink="/history">History</mat-list-item>
-            <mat-list-item routerLink="/custom">Manual Calculation </mat-list-item>
+        <mat-nav-list class="drawer-list">
+            <mat-list-item routerLink="/home" routerLinkActive="active-list-item">Home</mat-list-item>
+            <mat-list-item routerLink="/barre" routerLinkActive="active-list-item">Barre</mat-list-item>
+            <mat-list-item routerLink="/brandon" routerLinkActive="active-list-item">Brandon</mat-list-item>
+            <mat-list-item routerLink="/st-albans" routerLinkActive="active-list-item">St. Albans</mat-list-item>
+            <mat-list-item routerLink="/history" routerLinkActive="active-list-item">History</mat-list-item>
+            <mat-list-item routerLink="/custom" routerLinkActive="active-list-item">Manual Calculation </mat-list-item>
         </mat-nav-list>
         
     </mat-drawer>
-    <mat-drawer-content style="padding-left: 10px; ">
+    <mat-drawer-content class="content-outlet">
         <router-outlet></router-outlet>
     </mat-drawer-content>
   </mat-drawer-container>
