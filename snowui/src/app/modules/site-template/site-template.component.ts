@@ -11,7 +11,7 @@ import { WeatherService } from 'src/app/shared/weather.service';
 })
 export class SiteTemplateComponent implements OnInit {
   @Input() siteName: string | undefined;
-  @Input() monthlyKWH: any[] = [1,1,1,1]
+  @Input() monthlyKWH: any[] = [1,1,1,1,1]
   @Input() energyPrice: number = 0.2
 
   public forecastData: any;
@@ -28,9 +28,7 @@ export class SiteTemplateComponent implements OnInit {
   public setForecastData() {
     this.weatherService.getWeather().subscribe(res => {
       this.forecastData = res
-      setTimeout(()=>{this.snowmeltForecast()}, 500)
-      
-      
+      this.snowmeltForecast(0,res)
     })
   }
 
@@ -77,16 +75,20 @@ export class SiteTemplateComponent implements OnInit {
     if (snowdepth>20){
       return 'day-warning'
     }
+    else if (snowdepth>10){
+      return 'day-watch'
+    }
     else{
       return 'day-normal'
     }
   }
 
-  public snowmeltForecast(currentSnowDepth: any = 0) {
+  public snowmeltForecast(currentSnowDepth: any = 0, forecastData: any) {
     const ddCoeff = 2.74
     let snowDepth = currentSnowDepth
+    this.snowDepthArray = []
 
-    for (let day of this.forecastData?.daily){
+    for (let day of forecastData?.daily){
       if (day.snow){
         snowDepth += day.snow
       }

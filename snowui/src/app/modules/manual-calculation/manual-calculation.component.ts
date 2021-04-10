@@ -20,8 +20,8 @@ export class ManualCalculationComponent implements OnInit {
   public generateForm = true;
 
   customLocationForm = new FormGroup({
-    lat: new FormControl('', [Validators.min(-90), Validators.max(90), Validators.pattern("^[0-9]*$")]),
-    long: new FormControl('', [Validators.min(-180), Validators.max(180), Validators.pattern("^[0-9]*$")]),
+    lat: new FormControl('', [Validators.min(-90), Validators.max(90), Validators.pattern("-?[0-9]*.?[0-9]*$")]),
+    long: new FormControl('', [Validators.min(-180), Validators.max(180), Validators.pattern("-?[0-9]*.?[0-9]*$")]),
     kwh: new FormControl('2600'),
     price: new FormControl('0.2095'),
   })
@@ -30,6 +30,7 @@ export class ManualCalculationComponent implements OnInit {
   constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
+    this.weatherService.setWeather('46.81', '9.84')
   }
 
   onSubmit() {
@@ -37,7 +38,7 @@ export class ManualCalculationComponent implements OnInit {
     if (this.customLocationForm.value.lat) {
       this.customLat = this.customLocationForm.value.lat
     }
-    if (this.customLocationForm.value.lon){
+    if (this.customLocationForm.value.long){
       this.customLong = this.customLocationForm.value.long
     }
     let tempArray = []
@@ -46,6 +47,7 @@ export class ManualCalculationComponent implements OnInit {
     }
     this.monthlyKWH = tempArray
     this.energyPrice = this.customLocationForm.value.price
+    console.log(this.customLong)
     this.weatherService.setWeather(this.customLat, this.customLong)
     this.generateForm = true
   }

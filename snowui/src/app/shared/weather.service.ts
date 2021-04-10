@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { constants } from './constants';
 
 @Injectable({
@@ -9,7 +9,8 @@ import { constants } from './constants';
 export class WeatherService {
 
   constructor(private http: HttpClient) { }
-  weatherData: BehaviorSubject<Object> = new BehaviorSubject<Object>(fakeWeather);
+  //weatherData: BehaviorSubject<Object> = new BehaviorSubject<Object>(fakeWeather);
+  weatherData: Subject<Object> = new Subject();
 
   public getWeather(){
     return this.weatherData.asObservable();
