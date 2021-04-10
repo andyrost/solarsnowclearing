@@ -11,8 +11,8 @@ import { SiteTemplateComponent } from '../site-template/site-template.component'
 })
 export class ManualCalculationComponent implements OnInit {
   public customSiteName: string = "Custom Location";
-  public customLat: string = constants.brandonLat;
-  public customLong: string = constants.brandonLong;
+  public customLat: string = constants.defaultCustomLat
+  public customLong: string = constants.defaultCustomLong
   public monthlyKWH: any[] = [1540.484, 2212.643, 2794.123, 2644.573, 2751.145, 2839.637,
     3078.835, 2799.158, 2577.023, 1930.752, 1604.123, 1308.835]
   public energyPrice = 0.2095;
@@ -30,7 +30,7 @@ export class ManualCalculationComponent implements OnInit {
   constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
-    this.weatherService.setWeather('46.81', '9.84')
+    this.weatherService.setWeather(constants.defaultCustomLat, constants.defaultCustomLong)
   }
 
   onSubmit() {

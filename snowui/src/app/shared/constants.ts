@@ -6,4 +6,6 @@ export const constants = {
     brandonLong: "-73.0876",
     stAlbansLat: "44.8107",
     stAlbansLong: "-73.0836",
+    defaultCustomLat: '46.81',
+    defaultCustomLong: '9.84'
 }
