@@ -1,0 +1,9 @@
+.mat-card {
+    margin: 1rem;
+    width: 60vw;
+    display: inline-block;
+}
+.mat-card-content {
+    font-size: large;
+    font-family: serif;
+}
