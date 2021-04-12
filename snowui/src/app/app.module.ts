@@ -29,6 +29,7 @@ import { SiteTemplateComponent } from './modules/site-template/site-template.com
 import { WeatherService } from './shared/weather.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { PagenotfoundComponent } from './core/pagenotfound/pagenotfound.component';
 
 
 
@@ -44,7 +45,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     HistoryComponent,
     ManualCalculationComponent,
     NavComponent,
-    SiteTemplateComponent
+    SiteTemplateComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
