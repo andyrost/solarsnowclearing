@@ -1,0 +1,111 @@
+<div class = "page-wrapper">
+    <mat-card class="tools">
+        <mat-card-title>Tools</mat-card-title>
+        <form [formGroup]="allTempForm" (ngSubmit)="onTempSubmit()">
+            <mat-form-field appearance="standard" class = "short">
+                <mat-label>All Temps (F&deg;)</mat-label>
+                <input matInput formControlName="allTemp" placeholder="Temperature">
+            </mat-form-field>
+            <button mat-raised-button color="accent" type="submit" [disabled]="!allTempForm.valid">Set All</button>
+        </form>
+        <form [formGroup]="allSnowForm" (ngSubmit)="onSnowSubmit()">
+            <mat-form-field appearance="standard" class = "short">
+                <mat-label>All Snow (mm)</mat-label>
+                <input matInput formControlName="allSnow" placeholder="Snowfall">
+            </mat-form-field>
+            <button mat-raised-button color="accent" type="submit" [disabled]="!allSnowForm.valid">Set All</button>
+        </form>
+    </mat-card>
+    <mat-card>
+        <mat-card-title>Manual Input</mat-card-title>
+        <form [formGroup]="manualCalculationForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="standard">
+                <mat-label>Current Snowdepth</mat-label>
+                <input matInput formControlName="snowdepth" placeholder="Snowdepth">
+                <mat-error>Not a valid snowdepth</mat-error>
+            </mat-form-field><br>
+            <mat-form-field appearance="standard">
+                <mat-label>Day 1 Average (F&deg;)</mat-label>
+                <input matInput formControlName="day1" placeholder="Temperature">
+                <mat-error>Not a valid temperature</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Day 1 Snowfall (mm)</mat-label>
+                <input matInput formControlName="day1snow" placeholder="Snowfall">
+                <mat-error>Not a valid snowfall measure</mat-error>
+            </mat-form-field><br>
+            <mat-form-field appearance="standard">
+                <mat-label>Day 2 Average (F&deg;)</mat-label>
+                <input matInput formControlName="day2" placeholder="Temperature">
+                <mat-error>Not a valid temperature</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Day 2 Snowfall (mm)</mat-label>
+                <input matInput formControlName="day2snow" placeholder="Snowfall">
+                <mat-error>Not a valid snowfall measure</mat-error>
+            </mat-form-field><br>
+            <mat-form-field appearance="standard">
+                <mat-label>Day 3 Average (F&deg;)</mat-label>
+                <input matInput formControlName="day3" placeholder="Temperature">
+                <mat-error>Not a valid temperature</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Day 3 Snowfall (mm)</mat-label>
+                <input matInput formControlName="day3snow" placeholder="Snowfall">
+                <mat-error>Not a valid snowfall measure</mat-error>
+            </mat-form-field><br>
+            <mat-form-field appearance="standard">
+                <mat-label>Day 4 Average (F&deg;)</mat-label>
+                <input matInput formControlName="day4" placeholder="Temperature">
+                <mat-error>Not a valid temperature</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Day 4 Snowfall (mm)</mat-label>
+                <input matInput formControlName="day4snow" placeholder="Snowfall">
+                <mat-error>Not a valid snowfall measure</mat-error>
+            </mat-form-field><br>
+            <mat-form-field appearance="standard">
+                <mat-label>Day 5 Average (F&deg;)</mat-label>
+                <input matInput formControlName="day5" placeholder="Temperature">
+                <mat-error>Not a valid temperature</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Day 5 Snowfall (mm)</mat-label>
+                <input matInput formControlName="day5snow" placeholder="Snowfall">
+                <mat-error>Not a valid snowfall measure</mat-error>
+            </mat-form-field><br>
+            <mat-form-field appearance="standard">
+                <mat-label>Day 6 Average (F&deg;)</mat-label>
+                <input matInput formControlName="day6" placeholder="Temperature">
+                <mat-error>Not a valid temperature</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Day 6 Snowfall (mm)</mat-label>
+                <input matInput formControlName="day6snow" placeholder="Snowfall">
+                <mat-error>Not a valid snowfall measure</mat-error>
+            </mat-form-field><br>
+            <mat-form-field appearance="standard">
+                <mat-label>Day 7 Average (F&deg;)</mat-label>
+                <input matInput formControlName="day7" placeholder="Temperature">
+                <mat-error>Not a valid temperature</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Day 7 Snowfall (mm)</mat-label>
+                <input matInput formControlName="day7snow" placeholder="Snowfall">
+                <mat-error>Not a valid snowfall measure</mat-error>
+            </mat-form-field><br>
+            <button mat-raised-button type="submit" [disabled]="!manualCalculationForm.valid">Submit</button>
+        </form>
+    </mat-card>
+    <mat-card>
+        <mat-card-title>Output</mat-card-title>
+        <div class="output-separator"></div>
+        <div *ngFor="let day of outputArray; let i = index">
+        <mat-form-field>
+            <mat-label>Day {{i+1}} Snowdepth</mat-label>
+            <input matInput readonly>
+            <div>{{day}}</div>
+        </mat-form-field><br>
+    </div>
+    </mat-card>
+</div>

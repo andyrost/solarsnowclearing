@@ -1,0 +1,19 @@
+.page-wrapper {
+    display: inline-flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 1rem;
+}
+.mat-form-field {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+.output-separator {
+    margin-top: 4rem;
+}
+.tools {
+    height: 20vh;
+}
+.short {
+    width: 5rem;
+}
