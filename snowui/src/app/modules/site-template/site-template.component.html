@@ -1,5 +1,7 @@
 <div class="page-wrapper">
-<h1>Showing weather information for {{forecastData?.lat}}, {{forecastData?.lon}} ({{ siteName }})</h1>
+<mat-card class = "title-card">
+    <mat-card-title>Showing weather information for {{forecastData?.lat}}, {{forecastData?.lon}} ({{ siteName }})</mat-card-title>
+</mat-card><br>
 <mat-card class="top-card">
     <mat-card-title>Eight Day Expected Revenue</mat-card-title><br>
     <div class="flex-contain">
@@ -18,9 +20,9 @@
     <b>Expected Revenue: {{getDayExpectedRevenue(forecastData?.daily[i+4].dt, day) | number: '1.2-2'}}$</b>
 </div>
 </div>
-</mat-card>
-<mat-grid-list cols = "2" rowHeight="20rem">
-    <mat-grid-tile>
+</mat-card><br>
+<div class="current-tomorrow-list">
+    <div class="flex-contain">
     <mat-card class="current-weather">
         <mat-card-title>
             Current Weather
@@ -28,12 +30,21 @@
         <fa-icon [icon]="getIconName(0,true)" size="4x"></fa-icon>
         <h1>{{ forecastData?.current?.temp | number: '1.0-0'}}&deg;F</h1>
         <mat-card-content>
-            Date: {{ forecastData?.daily[0]?.dt * 1000 | date:'EEEE, MMMM d'}}<br>
-            Cloud cover: {{ forecastData?.current?.clouds }}%
+            <mat-grid-list cols=2 rowHeight="4rem">
+                <mat-grid-tile>
+                    Date: {{ forecastData?.daily[0]?.dt * 1000 | date:'EEEE, MMMM d'}}<br>
+                    Cloud cover: {{ forecastData?.current?.clouds }}%<br>
+                    Sunrise: {{forecastData?.current?.sunrise * 1000 | date: 'shortTime'}} ET
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    Description: {{forecastData?.current?.weather[0]?.description}}<br>
+                    Wind Speed: {{forecastData?.current?.wind_speed}} mph<br>
+                    Sunset: {{forecastData?.current?.sunset * 1000 | date: 'shortTime'}} ET
+                </mat-grid-tile>
+            </mat-grid-list>
+            
         </mat-card-content>
-    </mat-card></mat-grid-tile>
-
-    <mat-grid-tile>
+    </mat-card>
     <mat-card class="current-weather">
         <mat-card-title>
             Tomorrow's Weather
@@ -42,13 +53,24 @@
         <h1>Hi: {{ forecastData?.daily[1]?.temp?.max | number: '1.0-0'}}&deg;  
             Lo: {{ forecastData?.daily[1]?.temp?.min | number: '1.0-0'}}&deg;F</h1>
         <mat-card-content>
-            Date: {{ forecastData?.daily[1].dt * 1000 | date:'EEEE, MMMM d'}}<br>
-            Cloud cover: {{ forecastData?.daily[1]?.clouds }}%
+            <mat-grid-list cols=2 rowHeight="4rem">
+                <mat-grid-tile>
+                    Date: {{ forecastData?.daily[1]?.dt * 1000 | date:'EEEE, MMMM d'}}<br>
+                    Cloud cover: {{ forecastData?.daily[1]?.clouds }}%<br>
+                    Sunrise: {{forecastData?.daily[1]?.sunrise * 1000 | date: 'shortTime'}} ET
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    Description: {{forecastData?.daily[1]?.weather[0]?.description}}<br>
+                    Wind Speed: {{forecastData?.daily[1]?.wind_speed}} mph<br>
+                    Sunset: {{forecastData?.daily[1]?.sunset * 1000 | date: 'shortTime'}} ET
+                </mat-grid-tile>
+            </mat-grid-list>
         </mat-card-content>
 
-    </mat-card></mat-grid-tile>
-</mat-grid-list>
-<mat-grid-list cols = 3 rowHeight="15rem" class = "future-weather-list">
+    </mat-card>
+</div>
+</div><br>
+<mat-grid-list cols = 3 rowHeight="13rem" class = "future-weather-list">
     <mat-grid-tile *ngFor="let day of forecastData?.daily.slice(2,8); let i=index">
         <mat-card class="future-weather">
             <mat-card-title>

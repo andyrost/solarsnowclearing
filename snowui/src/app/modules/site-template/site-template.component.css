@@ -1,6 +1,14 @@
 .current-weather {
     width:30vw;
     text-align: center;
+    max-width: 25rem;
+}
+.current-tomorrow-list {
+    display: inline-block;
+    width: 60%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 .future-weather {
     width:11vw;
@@ -8,7 +16,16 @@
 }
 
 .future-weather-list {
-    width: 100%
+    width: 50%;
+    min-width: 40%;
+    max-width: 70%;
+    display: inline-block;
+}
+
+.title-card {
+    margin: 1rem;
+    max-width: 90%;
+    display: inline-block;
 }
 .mat-card.h1{
     font-size: 1rem;
@@ -16,7 +33,7 @@
 
 .top-card {
     text-align: center;
-    width: 90%;
+    max-width: 90%;
     display: inline-block;
 }
 
@@ -28,7 +45,7 @@
 
 .flex-contain {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .day-warning {
