@@ -30,6 +30,7 @@ import { WeatherService } from './shared/weather.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { PagenotfoundComponent } from './core/pagenotfound/pagenotfound.component';
+import { CustomSiteComponent } from './modules/custom-site/custom-site.component';
 
 
 
@@ -46,7 +47,8 @@ import { PagenotfoundComponent } from './core/pagenotfound/pagenotfound.componen
     ManualCalculationComponent,
     NavComponent,
     SiteTemplateComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    CustomSiteComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { HomeComponent } from './core/home/home.component';
 import { PagenotfoundComponent } from './core/pagenotfound/pagenotfound.component';
 import { BarreComponent } from './modules/barre/barre.component';
 import { BrandonComponent } from './modules/brandon/brandon.component';
+import { CustomSiteComponent } from './modules/custom-site/custom-site.component';
 import { HistoryComponent } from './modules/history/history.component';
 import { ManualCalculationComponent } from './modules/manual-calculation/manual-calculation.component';
 import { StAlbansComponent } from './modules/st-albans/st-albans.component';
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'brandon', component: BrandonComponent},
   {path: 'st-albans', component: StAlbansComponent},
   {path: 'history', component: HistoryComponent},
-  {path: 'custom', component: ManualCalculationComponent},
+  {path: 'manual-calculation', component: ManualCalculationComponent},
+  {path: 'custom', component: CustomSiteComponent},
   {path: '404', component: PagenotfoundComponent},
   {path: '**', redirectTo: '/404'}
 

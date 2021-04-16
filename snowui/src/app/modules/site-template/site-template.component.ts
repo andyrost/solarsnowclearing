@@ -1,7 +1,5 @@
 import { Component, OnInit,Input} from '@angular/core';
 import { icon } from 'src/app/shared/weatherIconMap';
-import { HttpClient } from '@angular/common/http';
-import { constants } from 'src/app/shared/constants';
 import { WeatherService } from 'src/app/shared/weather.service';
 
 @Component({
