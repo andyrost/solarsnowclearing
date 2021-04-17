@@ -51,20 +51,14 @@ export class SiteTemplateComponent implements OnInit {
     let month = dateObj.getMonth()
     let idealRevenue = this.monthlyKWH[month] * this.energyPrice
     let sunLoss = 0
-    if (snowDepth > 5) {
-      sunLoss = 0.6
+    if (snowDepth >=0 ) {
+      sunLoss = Math.sqrt(0.04*snowDepth)
     }
-    if (snowDepth > 10) {
-      sunLoss = 0.7
+    if (snowDepth >= 20) {
+      sunLoss = (1/800)*snowDepth + 0.875
     }
-    if (snowDepth > 15) {
-      sunLoss = 0.7
-    }
-    if (snowDepth > 20) {
-      sunLoss = 0.9
-    }
-    if (snowDepth > 100) {
-      sunLoss = 1.0
+    if (snowDepth >= 100) {
+      sunLoss = 1
     }
     return idealRevenue - sunLoss*idealRevenue
   }

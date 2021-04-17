@@ -1,7 +1,7 @@
 .page-wrapper {
     display: inline-flex;
     justify-content: space-evenly;
-    width: 100%;
+    width: 90%;
     margin: 1rem;
 }
 .mat-form-field {
