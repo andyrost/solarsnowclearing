@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ManualCalculationComponent implements OnInit {
 
-  outputArray = [0,0,0,0,0,0,0]
+  outputArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
   constructor() { }
 
@@ -36,6 +36,20 @@ export class ManualCalculationComponent implements OnInit {
     day6snow: new FormControl('', [Validators.pattern("^[0-9]*.?[0-9]*$"), Validators.required, Validators.min(0)]),
     day7: new FormControl('', [Validators.pattern("^-?[0-9]*.?[0-9]*$"), Validators.required]),
     day7snow: new FormControl('', [Validators.pattern("^[0-9]*.?[0-9]*$"), Validators.required, Validators.min(0)]),
+    day8: new FormControl('', [Validators.pattern("^-?[0-9]*.?[0-9]*$"), Validators.required]),
+    day8snow: new FormControl('', [Validators.pattern("^[0-9]*.?[0-9]*$"), Validators.required, Validators.min(0)]),
+    day9: new FormControl('', [Validators.pattern("^-?[0-9]*.?[0-9]*$"), Validators.required]),
+    day9snow: new FormControl('', [Validators.pattern("^[0-9]*.?[0-9]*$"), Validators.required, Validators.min(0)]),
+    day10: new FormControl('', [Validators.pattern("^-?[0-9]*.?[0-9]*$"), Validators.required]),
+    day10snow: new FormControl('', [Validators.pattern("^[0-9]*.?[0-9]*$"), Validators.required, Validators.min(0)]),
+    day11: new FormControl('', [Validators.pattern("^-?[0-9]*.?[0-9]*$"), Validators.required]),
+    day11snow: new FormControl('', [Validators.pattern("^[0-9]*.?[0-9]*$"), Validators.required, Validators.min(0)]),
+    day12: new FormControl('', [Validators.pattern("^-?[0-9]*.?[0-9]*$"), Validators.required]),
+    day12snow: new FormControl('', [Validators.pattern("^[0-9]*.?[0-9]*$"), Validators.required, Validators.min(0)]),
+    day13: new FormControl('', [Validators.pattern("^-?[0-9]*.?[0-9]*$"), Validators.required]),
+    day13snow: new FormControl('', [Validators.pattern("^[0-9]*.?[0-9]*$"), Validators.required, Validators.min(0)]),
+    day14: new FormControl('', [Validators.pattern("^-?[0-9]*.?[0-9]*$"), Validators.required]),
+    day14snow: new FormControl('', [Validators.pattern("^[0-9]*.?[0-9]*$"), Validators.required, Validators.min(0)]),
   })
 
   ngOnInit(): void {
@@ -46,7 +60,7 @@ export class ManualCalculationComponent implements OnInit {
     let snowDepth = currentSnowDepth;
     let newArray = [];
 
-    for (let i = 0; i < 7; i++){
+    for (let i = 0; i < 14; i++){
       snowDepth += forecastSnow[i];
 
       let meanTempF = forecastTemp[i];
@@ -66,13 +80,13 @@ export class ManualCalculationComponent implements OnInit {
   }
 
   public onTempSubmit(){
-    for (let i=0; i<7;i++){
+    for (let i=0; i<14;i++){
       this.manualCalculationForm.controls['day'+(i+1)].setValue(this.allTempForm.value.allTemp)
     }
   }
 
   public onSnowSubmit(){
-    for (let i=0; i<7;i++){
+    for (let i=0; i<14;i++){
       this.manualCalculationForm.controls['day'+(i+1)+'snow'].setValue(this.allSnowForm.value.allSnow)
     }
   }
@@ -80,7 +94,7 @@ export class ManualCalculationComponent implements OnInit {
   public onSubmit(){
     let forecastTemp = [];
     let forecastSnow = [];
-    for (let i=0; i<7;i++){
+    for (let i=0; i<14;i++){
       forecastTemp.push(parseFloat(this.manualCalculationForm.value['day'+(i+1)]))
       forecastSnow.push(parseFloat(this.manualCalculationForm.value['day'+(i+1)+'snow']))
     }
