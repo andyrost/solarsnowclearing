@@ -15,18 +15,20 @@ export class SiteTemplateComponent implements OnInit {
   public forecastData: any;
   public snowDepthArray: any = [];
   public icon = icon;
+  public roiArray: any[] = [];
 
 
   constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
-    this.setForecastData()
+    this.setForecastData();
   }
 
   public setForecastData() {
     this.weatherService.getWeather().subscribe(res => {
       this.forecastData = res
       this.snowmeltForecast(0,res)
+      this.setDayROIArray();
     })
   }
 
@@ -46,7 +48,31 @@ export class SiteTemplateComponent implements OnInit {
     return this.monthlyKWH[month] * this.energyPrice
   }
 
+  public setDayROIArray() {
+    this.roiArray = []
+    for (let i=0; i<8;i++){
+      let dayROI:number = 0
+      if (this.snowDepthArray[i] < 76.2){
+        dayROI = -700
+      }
+      else {
+        dayROI = -1100
+      }
+      for (let j=i; j<(i+8);j++){
+        if (j<8) {
+          dayROI += this.getDayExpectedRevenue(this.forecastData?.daily[j].dt, this.snowDepthArray[j]-this.snowDepthArray[i]) -
+            this.getDayExpectedRevenue(this.forecastData?.daily[j].dt, this.snowDepthArray[j])
+        }
+      }
+      this.roiArray.push(dayROI)
+    }
+
+  }
+
   public getDayExpectedRevenue(date: number, snowDepth: number) {
+    if (snowDepth < 0){
+      snowDepth = 0
+    }
     let dateObj = new Date(date*1000)
     let month = dateObj.getMonth()
     let idealRevenue = this.monthlyKWH[month] * this.energyPrice
@@ -69,6 +95,15 @@ export class SiteTemplateComponent implements OnInit {
     }
     else if (snowdepth>10){
       return 'day-watch'
+    }
+    else{
+      return 'day-normal'
+    }
+  }
+
+  public getROIClass(roi: number){
+    if (roi > 140) {
+      return 'day-success'
     }
     else{
       return 'day-normal'

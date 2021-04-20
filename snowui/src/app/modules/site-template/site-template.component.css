@@ -35,6 +35,7 @@
     text-align: center;
     max-width: 90%;
     display: inline-block;
+    margin:1rem;
 }
 
 .page-wrapper {
@@ -67,6 +68,14 @@
 .day-normal {
     padding:1rem;
     border-radius: 10px;
+    width: calc(230px - 1rem);
+    margin: 0.5rem;
+}
+
+.day-success {
+    padding:1rem;
+    border-radius: 10px;
+    background-color: rgb(227, 255, 200);
     width: calc(230px - 1rem);
     margin: 0.5rem;
 }
