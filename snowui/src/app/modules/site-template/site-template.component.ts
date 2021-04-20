@@ -16,6 +16,7 @@ export class SiteTemplateComponent implements OnInit {
   public snowDepthArray: any = [];
   public icon = icon;
   public roiArray: any[] = [];
+  public revGainArray: any[] = [];
 
 
   constructor(private weatherService: WeatherService) { }
@@ -50,22 +51,39 @@ export class SiteTemplateComponent implements OnInit {
 
   public setDayROIArray() {
     this.roiArray = []
+    this.revGainArray = []
     for (let i=0; i<8;i++){
-      let dayROI:number = 0
+      let revGain:number = 0
+      let dayROI: number = 0
       if (this.snowDepthArray[i] < 76.2){
-        dayROI = -700
+        revGain = -700
       }
       else {
-        dayROI = -1100
+        revGain = -1100
       }
       for (let j=i; j<(i+8);j++){
         if (j<8) {
-          dayROI += this.getDayExpectedRevenue(this.forecastData?.daily[j].dt, this.snowDepthArray[j]-this.snowDepthArray[i]) -
+          dayROI += this.getDayIdealizedRevenue(this.forecastData?.daily[j].dt) - this.getDayExpectedRevenue(this.forecastData?.daily[j].dt, this.snowDepthArray[j])
+          revGain += this.getDayExpectedRevenue(this.forecastData?.daily[j].dt, this.snowDepthArray[j]-this.snowDepthArray[i]) -
             this.getDayExpectedRevenue(this.forecastData?.daily[j].dt, this.snowDepthArray[j])
         }
+        //if (j>=8) {
+        //  dayROI += this.getDayIdealizedRevenue(this.forecastData?.daily[7].dt) - this.getDayExpectedRevenue(this.forecastData?.daily[7].dt, this.snowDepthArray[7])
+        //  revGain += this.getDayExpectedRevenue(this.forecastData?.daily[7].dt, this.snowDepthArray[7]-this.snowDepthArray[i]) -
+        //    this.getDayExpectedRevenue(this.forecastData?.daily[7].dt, this.snowDepthArray[7])
+        //}
       }
-      this.roiArray.push(dayROI)
+      let init = 0
+      if (this.snowDepthArray[i] < 76.2){
+        init = 700
+      }
+      else {
+        init = 1100
+      }
+      this.roiArray.push(((dayROI-init)*100)/init)
+      this.revGainArray.push(revGain)
     }
+    console.log()
 
   }
 

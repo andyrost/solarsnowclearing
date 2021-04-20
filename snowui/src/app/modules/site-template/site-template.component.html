@@ -24,15 +24,17 @@
 <mat-card class="top-card">
     <mat-card-title>ROI of Clearing Snow</mat-card-title>
     <div class="flex-contain">
-        <div *ngFor = "let day of roiArray.slice(0,4); let i = index" [ngClass]="getROIClass(day)">
+        <div *ngFor = "let day of roiArray.slice(0,4); let i = index" [ngClass]="getROIClass(revGainArray[i])">
             <h1>{{forecastData?.daily[i].dt * 1000 | date:'EEEE'}}<br></h1>
-            ROI: {{day}}
+            ROI: {{day | number: '1.2-2'}}%<br>
+            Revenue Gain: {{revGainArray[i] | number: '1.2-2'}}$
         </div>
     </div><br>
     <div class="flex-contain">
-        <div *ngFor = "let day of roiArray.slice(4,8); let i = index" [ngClass]="getROIClass(day)">
+        <div *ngFor = "let day of roiArray.slice(4,8); let i = index" [ngClass]="getROIClass(revGainArray[i+4])">
             <h1>{{forecastData?.daily[i+4].dt * 1000 | date:'EEEE'}}<br></h1>
-            ROI: {{day}}
+            ROI: {{day | number: '1.2-2'}}%<br>
+            Revenue Gain: {{revGainArray[i+4] | number: '1.2-2'}}$
         </div>
         </div>
 </mat-card><br>
