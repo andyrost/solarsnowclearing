@@ -11,6 +11,11 @@
     margin-bottom: 1rem;
     text-align: center;
 }
+
+::ng-deep .tooltip {
+    font-size: medium !important;
+}
+
 .future-weather {
     width:15rem;
     text-align: center;

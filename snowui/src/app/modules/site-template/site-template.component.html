@@ -1,40 +1,41 @@
 <div class="page-wrapper">
 <mat-card class = "title-card">
     <mat-card-title>Showing weather information for {{forecastData?.lat}}, {{forecastData?.lon}} ({{ siteName }})</mat-card-title>
+    <mat-card-subtitle>Hover over fields (i.e. Expected Snowdepth) to get more information</mat-card-subtitle>
 </mat-card><br>
 <mat-card class="top-card">
-    <mat-card-title>Eight Day Expected Revenue</mat-card-title><br>
+    <mat-card-title matTooltip="">Eight Day Expected Revenue</mat-card-title><br>
     <div class="flex-contain">
     <div *ngFor = "let day of snowDepthArray.slice(0,4); let i = index" [ngClass]="getWarningClass(day)">
-        <h1>{{forecastData?.daily[i].dt * 1000 | date:'EEEE'}}<br></h1>
-        Expected Snowdepth: {{day | number: '1.2-2'}} mm<br>
-        Idealized Revenue: {{getDayIdealizedRevenue(forecastData?.daily[i].dt) | number: '1.2-2'}}$<br>
-        <b>Expected Revenue: {{getDayExpectedRevenue(forecastData?.daily[i].dt, day) | number: '1.2-2'}}$</b>
+        <h1>{{forecastData?.daily[i].dt * 1000 | date:'EEE, M/d'}}<span *ngIf="i==0"> (Today)</span></h1><br>
+        <div matTooltip="The expected snowdepth calculated from the forecasted temperature and snowfall." matTooltipClass="tooltip">Expected Snowdepth: {{day | number: '1.2-2'}} mm</div>
+        <div matTooltip="The maximum revenue that can be generated from the solar panels in a day." matTooltipClass="tooltip">Idealized Revenue: {{getDayIdealizedRevenue(forecastData?.daily[i].dt) | number: '1.2-2'}}$</div>
+        <div matTooltip="The revenue that is expected to be generated, given the future snowdepth prediction." matTooltipClass="tooltip"><b>Expected Revenue: {{getDayExpectedRevenue(forecastData?.daily[i].dt, day) | number: '1.2-2'}}$</b></div>
     </div>
 </div><br>
 <div class="flex-contain">
 <div *ngFor = "let day of snowDepthArray.slice(4,8); let i = index" [ngClass]="getWarningClass(day)">
-    <h1>{{forecastData?.daily[i+4].dt * 1000 | date:'EEEE'}}<br></h1>
-    Expected Snowdepth: {{day | number: '1.2-2'}} mm<br>
-    Idealized Revenue: {{getDayIdealizedRevenue(forecastData?.daily[i+4].dt) | number: '1.2-2'}}$<br>
-    <b>Expected Revenue: {{getDayExpectedRevenue(forecastData?.daily[i+4].dt, day) | number: '1.2-2'}}$</b>
+    <h1>{{forecastData?.daily[i+4].dt * 1000 | date:'EEE, M/d'}}<br></h1>
+    <div matTooltip="The expected snowdepth calculated from the forecasted temperature and snowfall." matTooltipClass="tooltip">Expected Snowdepth: {{day | number: '1.2-2'}} mm</div>
+    <div matTooltip="The maximum revenue that can be generated from the solar panels in a day." matTooltipClass="tooltip">Idealized Revenue: {{getDayIdealizedRevenue(forecastData?.daily[i+4].dt) | number: '1.2-2'}}$</div>
+    <div matTooltip="The revenue that is expected to be generated, given the future snowdepth prediction." matTooltipClass="tooltip"><b>Expected Revenue: {{getDayExpectedRevenue(forecastData?.daily[i+4].dt, day) | number: '1.2-2'}}$</b></div>
 </div>
 </div>
 </mat-card><br>
 <mat-card class="top-card">
-    <mat-card-title>ROI of Clearing Snow</mat-card-title>
+    <mat-card-title>Return On Investment (ROI) of Clearing Snow</mat-card-title>
     <div class="flex-contain">
         <div *ngFor = "let day of roiArray.slice(0,4); let i = index" [ngClass]="getROIClass(revGainArray[i])">
-            <h1>{{forecastData?.daily[i].dt * 1000 | date:'EEEE'}}<br></h1>
-            ROI: {{day | number: '1.2-2'}}%<br>
-            Revenue Gain: {{revGainArray[i] | number: '1.2-2'}}$
+            <h1>{{forecastData?.daily[i].dt * 1000 | date:'EEE, M/d'}}<span *ngIf="i==0"> (Today)</span></h1><br>
+            <div matTooltip="The Return On Investment percentage if snow is cleared on this day." matTooltipClass="tooltip">ROI: {{day | number: '1.2-2'}}%</div>
+            <div matTooltip="The amount of profit that will be gained if snow is cleared on this day." matTooltipClass="tooltip">Revenue Gain: {{revGainArray[i] | number: '1.2-2'}}$</div>
         </div>
     </div><br>
     <div class="flex-contain">
         <div *ngFor = "let day of roiArray.slice(4,8); let i = index" [ngClass]="getROIClass(revGainArray[i+4])">
-            <h1>{{forecastData?.daily[i+4].dt * 1000 | date:'EEEE'}}<br></h1>
-            ROI: {{day | number: '1.2-2'}}%<br>
-            Revenue Gain: {{revGainArray[i+4] | number: '1.2-2'}}$
+            <h1>{{forecastData?.daily[i+4].dt * 1000 | date:'EEE, M/d'}}<br></h1>
+            <div matTooltip="The Return On Investment percentage if snow is cleared on this day." matTooltipClass="tooltip">ROI: {{day | number: '1.2-2'}}%</div>
+            <div matTooltip="The amount of profit that will be gained if snow is cleared on this day." matTooltipClass="tooltip">Revenue Gain: {{revGainArray[i+4] | number: '1.2-2'}}$</div>
         </div>
         </div>
 </mat-card><br>
@@ -55,7 +56,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     Description: {{forecastData?.current?.weather[0]?.description}}<br>
-                    Wind Speed: {{forecastData?.current?.wind_speed}} mph<br>
+                    Snowfall: {{!!forecastData?.daily[0]?.snow ? forecastData?.daily[0]?.snow : 0}} mm<br>
                     Sunset: {{forecastData?.current?.sunset * 1000 | date: 'shortTime'}} ET
                 </mat-grid-tile>
             </mat-grid-list>
@@ -78,7 +79,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     Description: {{forecastData?.daily[1]?.weather[0]?.description}}<br>
-                    Wind Speed: {{forecastData?.daily[1]?.wind_speed}} mph<br>
+                    Snowfall: {{!!forecastData?.daily[1]?.snow ? forecastData?.daily[1]?.snow : 0}} mm<br>
                     Sunset: {{forecastData?.daily[1]?.sunset * 1000 | date: 'shortTime'}} ET
                 </mat-grid-tile>
             </mat-grid-list>

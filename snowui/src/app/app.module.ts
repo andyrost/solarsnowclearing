@@ -31,6 +31,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { PagenotfoundComponent } from './core/pagenotfound/pagenotfound.component';
 import { CustomSiteComponent } from './modules/custom-site/custom-site.component';
+import { AcknowledgementsComponent } from './modules/acknowledgements/acknowledgements.component';
+import { SourcesComponent } from './modules/sources/sources.component';
 
 
 
@@ -48,7 +50,9 @@ import { CustomSiteComponent } from './modules/custom-site/custom-site.component
     NavComponent,
     SiteTemplateComponent,
     PagenotfoundComponent,
-    CustomSiteComponent
+    CustomSiteComponent,
+    AcknowledgementsComponent,
+    SourcesComponent
   ],
   imports: [
     BrowserModule,

@@ -2,20 +2,22 @@
   padding-left: 10px; 
   margin-top: 4rem;
   height: calc(100vh - 4rem);
-  background-color: rgb(235, 247, 255);
+  background-color: rgb(238, 249, 255);
   text-align: center;
 }
 
 .mat-drawer{
   max-width: 12vw;
-  background-color: #729262;
+  background-color: rgb(238, 249, 255);
+  padding: 5px;
 }
 
 .drawer-list{
   margin-top: 5rem; 
 }
 .active-list-item {
-  background-color: #638055 !important;
+  background-color: #638DB7 !important;
+  border-radius: 7px;
 }
 
 .mat-drawer-container {
