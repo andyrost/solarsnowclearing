@@ -1,5 +1,9 @@
 # Solar Snow Clearing Web Application
 
+## Deployed WebApp
+
+http://solarsnowclearing.s3-website.us-east-2.amazonaws.com/
+
 ## How to run locally
 
 Install nodeJs from the link here
