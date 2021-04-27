@@ -15,6 +15,8 @@ Type: git clone https://github.com/andyrost/solarsnowclearing.git
 
 Then type: cd solarsnowclearing/snowui
 
+Then type: npm install
+
 Then type: npm start
 
 The application should open in your browser
